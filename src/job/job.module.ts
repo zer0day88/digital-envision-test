@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
 import { JobService } from './job.service';
-import { DatabaseModule } from 'src/database/database.module';
-import { DatabaseService } from 'src/database/database.service';
+import { ConfigModule } from '@nestjs/config';
+import appConfig from '../config/template.config';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  imports:[DatabaseModule],
-  providers: [JobService]
+  imports: [
+    ConfigModule.forRoot({
+      load: [appConfig],
+    }),
+    HttpModule,
+  ],
+  providers: [JobService],
 })
 export class JobModule {}

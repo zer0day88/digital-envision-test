@@ -1,0 +1,4 @@
+template_name:
+  - birthday
+
+base_url: 'https://email-service.digitalenvision.com.au'
